@@ -1,0 +1,117 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative; /* Para el uso de pseudo-elemento */
+    overflow: hidden;
+    text-align: center; /* Centrar texto */
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('./fondo.png');
+    background-size: cover; /* Cubrir toda la pantalla */
+    background-position: center; /* Centrar la imagen */
+    filter: brightness(0.5); /* Hacer la imagen más oscura */
+    z-index: -1; /* Asegurar que esté detrás del contenido */
+}
+
+.container {
+    animation: fadeIn 2s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro para mejorar la legibilidad */
+    padding: 20px;
+    border-radius: 10px; /* Bordes redondeados */
+    position: relative; /* Para asegurar que el contenedor esté sobre el fondo */
+}
+
+h1, p, button {
+    color: white; /* Asegurar que el texto sea blanco */
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    animation: bounce 1s infinite;
+}
+
+p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff4081;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ff79b0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-30px); }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+.animate-image {
+    animation: scaleRotate 1.5s ease forwards;
+}
+
+@keyframes scaleRotate {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1) rotate(10deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+img {
+    max-width: 80%; /* Ajustar el tamaño de la imagen */
+    height: auto; /* Mantener la proporción */
+    display: block; /* Hacer que la imagen sea un bloque */
+    margin: 20px auto; /* Centrar la imagen */
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    opacity: 0.8;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
